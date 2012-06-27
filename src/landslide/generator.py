@@ -61,6 +61,7 @@ class Generator(object):
                               one
             - ``destination_file``: path to html or PDF destination file
             - ``direct``: enables direct rendering presentation to stdout
+            - ``string``: enables rendering to a string
             - ``debug``: enables debug mode
             - ``embed``: generates a standalone document, with embedded assets
             - ``encoding``: the encoding to use for this presentation
@@ -197,6 +198,8 @@ class Generator(object):
                                "export")
             else:
                 print self.render().encode(self.encoding)
+        else if self.string:
+            return self.render().encode(self.encoding)
         else:
             self.write()
             self.log(u"Generated file: %s" % self.destination_file)
