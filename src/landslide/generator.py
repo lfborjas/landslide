@@ -61,7 +61,7 @@ class Generator(object):
                               one
             - ``destination_file``: path to html or PDF destination file
             - ``direct``: enables direct rendering presentation to stdout
-            - ``string``: enables rendering to a string
+            - ``as_string``: enables rendering to a string
             - ``debug``: enables debug mode
             - ``embed``: generates a standalone document, with embedded assets
             - ``encoding``: the encoding to use for this presentation
@@ -77,6 +77,7 @@ class Generator(object):
         self.destination_file = kwargs.get('destination_file',
                                            'presentation.html')
         self.direct = kwargs.get('direct', False)
+        self.as_string = kwargs.get('as_string', False)
         self.embed = kwargs.get('embed', False)
         self.encoding = kwargs.get('encoding', 'utf8')
         self.extensions = kwargs.get('extensions', None)
@@ -198,7 +199,7 @@ class Generator(object):
                                "export")
             else:
                 print self.render().encode(self.encoding)
-        elif self.string:
+        elif self.as_string:
             return self.render().encode(self.encoding)
         else:
             self.write()
