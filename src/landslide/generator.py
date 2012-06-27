@@ -198,7 +198,7 @@ class Generator(object):
                                "export")
             else:
                 print self.render().encode(self.encoding)
-        else if self.string:
+        elif self.string:
             return self.render().encode(self.encoding)
         else:
             self.write()
